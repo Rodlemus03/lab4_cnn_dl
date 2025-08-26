@@ -84,14 +84,6 @@ def plot_curves(history, save_dir: Path, title_prefix=""):
 # ----------------------------
 
 class SimpleCNN(nn.Module):
-    """
-    A small CNN for MNIST:
-    - Conv(1, C1, 3, padding=1) + ReLU -> MaxPool(2)
-    - Conv(C1, C2, 3, padding=1) + ReLU -> MaxPool(2)
-    - Flatten
-    - FC -> hidden -> ReLU -> Dropout
-    - FC -> 10
-    """
     def __init__(self, c1=32, c2=64, hidden=128, pdrop=0.25):
         super().__init__()
         self.conv1 = nn.Conv2d(1, c1, kernel_size=3, padding=1)
@@ -113,7 +105,6 @@ class SimpleCNN(nn.Module):
 
 
 class MLP(nn.Module):
-    """A simple MLP baseline for MNIST."""
     def __init__(self, hidden1=256, hidden2=128, pdrop=0.3):
         super().__init__()
         self.fc1 = nn.Linear(28 * 28, hidden1)
